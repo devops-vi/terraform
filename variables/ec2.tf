@@ -1,6 +1,6 @@
 resource "aws_security_group" "allow_all_terraform" {
-    name = "allow_all_terraform"
-    description = "This is to create security group that should be used while creating the aws instance"
+    name = var.sg_name
+    description = var.sg_description
     egress {
         from_port = 0
         to_port = 0
@@ -9,10 +9,10 @@ resource "aws_security_group" "allow_all_terraform" {
         ipv6_cidr_blocks = ["::/0"]
         }
     ingress {
-        from_port = 22
-        to_port = 22
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
+        from_port = var.ingress_from_port
+        to_port = var.ingress_to_port
+        protocol = var.protocol
+        cidr_blocks = var.ingress_cidr
         ipv6_cidr_blocks = ["::/0"]
     }
 
@@ -22,12 +22,10 @@ resource "aws_security_group" "allow_all_terraform" {
 }
 
 resource "aws_instance" "terraform_var" {
-    ami = "ami-09c813fb71547fc4f"
-    instance_type = "t3.micro"
+    ami = var.ami_id
+    instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.allow_all_terraform.id]
-    tags = {
-        Name = "terraform_vars"
-    }
+    tags = var.tags
 }
 # resource "aws_vpc_security_group_ingress_rule" "allow_all_terrafrom_ipv4" {
 #   security_group_id = aws_security_group.allow_all_terrafrom.id

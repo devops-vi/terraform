@@ -12,9 +12,7 @@ variable "ami_id" {
 variable "common_tags" {
     type = map
     default = {
-        Project = "Ecpense"
+        Project = "Expense"
         Terraform = "True"
-
-    }
-  
+    }  
 }

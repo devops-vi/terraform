@@ -15,7 +15,7 @@ variable "ami_id" {
 }
 
 variable "domain" {
-  default = "laven.online"
+  default = "laven.cloud"
 }
 
 variable "zone_id" {

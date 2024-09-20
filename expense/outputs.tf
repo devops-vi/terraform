@@ -11,5 +11,10 @@ output "Instances_info" {
 }
 
 output "Route_53_info" {
-  value = aws_route53_record.expense_route53[*].name
+  value = {
+    for route in aws_route53_record.expense_route53 : route.name => {
+      name   = route.name
+      record = route.records
+    }
+  }
 }

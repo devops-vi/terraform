@@ -1,17 +1,17 @@
 variable "instance_names" {
-    type = list(string)
-    default = ["mysql","backend","frontend"]  
+  type    = list(string)
+  default = ["mysql", "backend", "frontend"]
 }
 variable "common_tags" {
-    type = map
-    default = {
-        Project = "Expense"
-        Terraform = True
-    }  
+  type = map(any)
+  default = {
+    Project   = "Expense"
+    Terraform = "True"
+  }
 }
 
 variable "ami_id" {
-    default = "ami-09c813fb71547fc4f"  
+  default = "ami-09c813fb71547fc4f"
 }
 
 variable "domain" {
@@ -19,5 +19,5 @@ variable "domain" {
 }
 
 variable "zone_id" {
-    default = "Z0920258HFVLFKHGIGVT"
+  default = "Z0920258HFVLFKHGIGVT"
 }

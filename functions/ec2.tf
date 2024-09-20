@@ -1,8 +1,8 @@
-resource "aws_instace" "functions_tf" {
+resource "aws_instance" "functions_tf" {
     count = length(var.instance_names)
     ami = var.ami_id
-    instace_type = "t3.micro"
-    vpc_security_group_id = [aws_security_group.allow_all_function.id]
+    instance_type = "t3.micro"
+    vpc_security_group_ids = [aws_security_group.allow_all_function.id]
 
     tags = merge(
         var.common_tags,

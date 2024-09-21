@@ -30,6 +30,6 @@ resource "aws_instance" "expense_instance" {
     instance_type = var.instance_names[count.index] == "mysql" ? "t3.small" : "t3.micro"
     
     tags = {
-      Name = var.instance_names
+      Name = var.instance_names[count.index]
     }
 }
